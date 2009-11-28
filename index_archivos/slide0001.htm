@@ -1,0 +1,410 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+xmlns:oa="urn:schemas-microsoft-com:office:activation"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=PowerPoint.Slide>
+<meta name=Generator content="Microsoft PowerPoint 10">
+<link id=Main-File rel=Main-File href="../index.htm">
+<link rel=Preview href=preview.wmf>
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+p\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+v\:textbox {display:none;}
+</style>
+<![endif]-->
+<title>index</title>
+<meta name=Description content="09/11/2002">
+<link rel=Stylesheet href="master03_stylesheet.css">
+<!--[if gte IE 5]>
+<object id=MSOANIM classid="CLSID:A4639D2F-774E-11D3-A490-00C04F6843FB"></object>
+<object id=MSOTIME classid="CLSID:A4639D29-774E-11D3-A490-00C04F6843FB"></object>
+<![endif]-->
+<![if !ppt]>
+
+<bgsound id=pptSound>
+
+<style media=print>
+<!--.sld
+	{left:0px !important;
+	width:6.0in !important;
+	height:4.5in !important;
+	font-size:103% !important;}
+-->
+</style>
+<style>
+<!--
+oa\:* { BEHAVIOR: url(#MSOANIM#ANIM) url(#MSOTIME#TIME) }
+oa\:par,oa\:seq,oa\:iterate { BEHAVIOR:url(#MSOTIME) }
+oa\:video,oa\:audio {BEHAVIOR:url(#MSOTIME) url(#MSOTIME#MEDIA) }
+-->
+</style>
+<script><!--
+function LoadSld()
+{
+	var sld=GetObj("SlideObj")
+	if( !g_supportsPPTHTML ) {
+		sld.style.visibility="visible"
+		return
+	}
+	if( MakeNotesVis() ) return
+	runAnimations = _InitAnimations();
+	if( IsWin("PPTSld") )
+		parent.SldUpdated(GetSldId())
+	g_origSz=parseInt(SlideObj.style.fontSize)
+	g_origH=sld.style.posHeight
+	g_origW=sld.style.posWidth
+	g_scaleHyperlinks=(document.all.tags("AREA").length>0)
+	if( g_scaleHyperlinks )
+		InitHLinkArray()
+	if( g_scaleInFrame||(IsWin("PPTSld") && parent.IsFullScrMode() ) )
+		document.body.scroll="no"
+	_RSW()
+	if( IsWin("PPTSld") && parent.IsFullScrMode() )
+		FullScrInit();
+	
+	MakeSldVis();
+	
+	if( runAnimations )
+	{
+		if( document.all("NSPlay") )
+			document.all("NSPlay").autoStart = false;
+		if( sld.filters && sld.filters.revealtrans )
+			setTimeout( "document.body.start()", sld.filters.revealtrans.duration * 1000 );
+		else
+			document.body.start();
+	}
+}
+function MakeSldVis()
+{
+	var fTrans=g_showAnimation && SldHasTrans()
+	if( fTrans )
+	{
+		if( g_bgSound ) {
+			idx=g_bgSound.indexOf(",");
+			pptSound.src=g_bgSound.substr( 0, idx );
+			pptSound.loop= -(parseInt(g_bgSound.substr(idx+1)));
+		}
+		SlideObj.filters.revealtrans.Apply()
+    }
+	SlideObj.style.visibility="visible"
+	if( fTrans )
+		SlideObj.filters.revealtrans.Play()
+}
+function MakeNotesVis()
+{
+	if( !IsNts() ) return false
+	SlideObj.style.display="none"
+	nObj = document.all.item("NotesObj")
+	parent.SetHasNts(0)
+	if( nObj ) {
+		nObj.style.display=""
+		parent.SetHasNts(1)
+	}
+	return 1
+}
+function ChkAutoAdv()
+{
+	if(SldHasTrans())
+		SlideObj.onfilterchange=AutoAdv
+	else
+		AutoAdv()
+}
+function AutoAdv()
+{
+	if(!IsWin("PPTSld") || !gUseSldTimings )return
+	var sld=GetCurSld()
+	if( (sld.mAdvDelay>0) && !parent.IsFramesMode() )
+		setTimeout("parent.GoToNextSld()",sld.mAdvDelay)
+}
+function GetObj(id)
+{
+	if(g_supportsPPTHTML) return document.all(id);
+	else return document.getElementById(id);
+}
+function SldHasTrans() { return SlideObj.style.getAttribute("filter")!="" }
+function GetSldId() { return sId=location.href.substring(location.href.lastIndexOf('/')+1) }
+function HideMenu() { if( frames["PPTSld"] && PPTSld.document.all.item("ctxtmenu") && PPTSld.ctxtmenu.style.display!="none" ) { PPTSld.ctxtmenu.style.display='none'; return true } return false }
+function IsWin( name ) { return window.name == name }
+function IsNts() { return IsWin("PPTNts") }
+function IsSldOrNts() { return( IsWin("PPTSld")||IsWin("PPTNts") ) }
+function SupportsPPTAnimation() { return( navigator.platform == "Win32" && navigator.appVersion.indexOf("Windows")>0 ) }
+function SupportsPPTHTML()
+{
+	var appVer=navigator.appVersion, msie=appVer.indexOf("MSIE "), ver=0
+	if( msie >= 0 )
+		ver=parseFloat( appVer.substring( msie+5, appVer.indexOf(";",msie) ) )
+	else
+		ver=parseInt(appVer)
+	return( ver >= 4 && msie >= 0 )
+}
+function _RSW()
+{
+	if( !g_supportsPPTHTML || IsNts() ||
+	  ( !g_scaleInFrame && (!IsWin("PPTSld") || !parent.IsFullScrMode()) ) )
+		return
+        var padding=0;
+        if( IsWin("PPTSld") && parent.IsFramesMode() ) padding=6
+	cltWidth=document.body.clientWidth-padding
+	cltHeight=document.body.clientHeight-padding
+	factor=(1.0*cltWidth)/g_origW
+	if( cltHeight < g_origH*factor )
+		factor=(1.0*cltHeight)/g_origH
+	newSize = g_origSz * factor
+	if( newSize < 1 ) newSize=1
+	s=SlideObj.style
+	s.fontSize=newSize+"px"
+	s.posWidth=g_origW*factor
+	s.posHeight=g_origH*factor
+	s.posLeft=(cltWidth-s.posWidth+padding)/2
+	s.posTop=(cltHeight-s.posHeight+padding)/2
+	if( g_scaleHyperlinks )
+		ScaleHyperlinks( factor )
+}
+function _InitAnimations()
+{
+	animRuntimeInstalled = ''+document.body.localTime != 'undefined';
+	isFullScreen = (window.name == "PPTSld") && !parent.IsFramesMode();
+	g_animUseRuntime = g_showAnimation && animRuntimeInstalled && !(isFullScreen && parent.IsSldVisited());
+	if( g_animUseRuntime ) {
+		collSeq = document.all.tags("seq");
+		if( collSeq != null ) {
+			for(ii=0;ii<collSeq.length;ii++) {
+				if( collSeq[ii].getAttribute( "p:nodeType" ) == "mainSeq" ) {
+					g_animMainSequence = collSeq[ii];
+					break;
+				}
+			}
+		}
+		if( g_animItemsToHide ) {
+			for(jj = 0; jj < g_animItemsToHide.length; jj++) {
+				if( hideObj = GetObj(g_animItemsToHide[jj]) )
+					hideObj.runtimeStyle.visibility="hidden";
+			}
+		}
+		if( g_animInteractiveItems ){
+			for(jj = 0; jj < g_animInteractiveItems.length; jj++) {
+				if( triggerObj = GetObj(g_animInteractiveItems[jj]) )
+					triggerObj.runtimeStyle.cursor="hand";
+			}
+		}
+		if( gUseSldTimings && ''+g_animSlideTime != 'undefined' ) {
+			adjustedTime = document.body.calculateAutoAdvanceTimes( g_animSlideTime, g_animEffectTimings );
+			if( IsWin("PPTSld") && adjustedTime != g_animSlideTime ) {
+			   var sld = GetCurSld();
+			   sld.mAdvDelay = adjustedTime * 1000;
+			}
+		}
+	}
+	return g_animUseRuntime;
+}
+function PlaySound( href, loop ){
+	href= unescape(href);
+	if( window.event ) window.event.cancelBubble = true;
+	pptSound.src = href;
+	pptSound.loop = loop ? -1 : 0;
+}
+
+var g_supportsPPTHTML = SupportsPPTHTML(), g_scaleInFrame = 1, gId="", g_bgSound="",
+    g_scaleHyperlinks = false, g_allowAdvOnClick = 1, g_showInBrowser = 1, gLoopCont = 0, gUseSldTimings = 1;
+var g_showAnimation = g_supportsPPTHTML && SupportsPPTAnimation() && g_showInBrowser;
+var g_animManager = null;
+var g_animUseRuntime = false;
+var g_animItemsToHide, g_animInteractiveItems, g_animSlideTime;
+var g_animMainSequence = null;
+
+//--></script><script><!--
+g_animItemsToHide=new Array("_x0000_s2054_AllText","_x0000_s2054","_x0000_s2053_AllText","_x0000_s2053","_x0000_s2052");
+
+//--></script><!--[if vml]><script>g_vml = 1;
+</script><![endif]--><![endif]><p:slidetransition advancetime="0" flag="1"/><o:shapelayout
+ v:ext="edit">
+ <o:idmap v:ext="edit" data="2"/>
+</o:shapelayout>
+</head>
+
+<body lang=ES-BO style='margin:0px;background-color:white' onresize="_RSW()"
+onload="LoadSld()" oa:clockstart="onstart">
+
+<div id=SlideObj class=sld style='position:absolute;top:0px;left:0px;
+width:554px;height:415px;font-size:16px;background-color:white;clip:rect(0%, 101%, 101%, 0%);
+visibility:hidden'><p:slide coordsize="720,540"
+ colors="#FFFFFF,#000000,#808080,#000000,#BBE0E3,#333399,#009999,#99CC00"
+ masterhref="master03.xml">
+ <p:shaperange href="master03.xml#_x0000_s1025"/><![if !ppt]><p:shaperange
+  href="master03.xml#_x0000_s1028"/><p:shaperange
+  href="master03.xml#_x0000_s1029"/><![endif]><v:shapetype id="_x0000_t75"
+  coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+  filled="f" stroked="f">
+  <v:stroke joinstyle="miter"/>
+  <v:formulas>
+   <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+   <v:f eqn="sum @0 1 0"/>
+   <v:f eqn="sum 0 0 @1"/>
+   <v:f eqn="prod @2 1 2"/>
+   <v:f eqn="prod @3 21600 pixelWidth"/>
+   <v:f eqn="prod @3 21600 pixelHeight"/>
+   <v:f eqn="sum @0 0 1"/>
+   <v:f eqn="prod @6 1 2"/>
+   <v:f eqn="prod @7 21600 pixelWidth"/>
+   <v:f eqn="sum @8 21600 0"/>
+   <v:f eqn="prod @7 21600 pixelHeight"/>
+   <v:f eqn="sum @10 21600 0"/>
+  </v:formulas>
+  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+  <o:lock v:ext="edit" aspectratio="t"/>
+ </v:shapetype><v:shape id="_x0000_s2052" type="#_x0000_t75" style='position:absolute;
+  left:214.875pt;top:131.625pt;width:290.25pt;height:276.75pt'>
+  <v:imagedata src="slide0001_image001.gif" o:title="logored"/>
+  <p:animation number="2" delay="0" type="object" effect="cut"
+   direction="noBlack" flag="17412"/></v:shape><![if !vml]><img border=0
+ v:shapes="_x0000_s2052" src="slide0001_image002.gif" style='position:absolute;
+ top:24.33%;left:29.78%;width:40.25%;height:51.32%'><![endif]><v:shapetype
+  id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="_x0000_s2053" type="#_x0000_t202" style='position:absolute;
+  left:110.5pt;top:417.375pt;width:192.75pt;height:40.875pt;mso-wrap-style:square;
+  v-text-anchor:top' filled="f" fillcolor="#bbe0e3 [4]" stroked="f"
+  strokecolor="black [1]">
+  <v:fill color2="white [0]"/>
+  <v:shadow color="gray [2]"/>
+  <v:textbox style='mso-fit-shape-to-text:t'/>
+  <p:animation number="3" delay="0" type="object" effect="cut"
+   direction="noBlack" buildby="char" flag="1028"/></v:shape>
+ <div id="_x0000_s2053_AllText" v:shape="_x0000_s2053" class=O
+ style='position:absolute;top:77.83%;left:16.42%;width:24.9%;height:6.5%;
+ white-space:nowrap'>
+ <div style='text-align:center;mso-line-spacing:"100 50 0";position:absolute;
+ top:0%;left:0%;width:100.0%;height:100.0%'><span lang=ES-MODERN
+ style='font-family:Tahoma;font-size:156%'><b><p:onmouseclick
+  hyperlinktype="otherFile" href="../principal.htm"><p:sound id="1"
+   builtinid="119" name="click.wav" href="sound001.wav"/></p:onmouseclick><a
+ href="../principal.htm" target="_blank"
+ onclick="window.event.cancelBubble=true;">Español</a></b></span><span
+ style='font-family:Tahoma;font-size:156%;mso-special-format:lastCR;display:
+ none'><b>&#13;</b></span></div>
+ </div>
+ <v:shape id="_x0000_s2054" type="#_x0000_t202" style='position:absolute;
+  left:422.375pt;top:417.375pt;width:204.125pt;height:40.875pt;
+  mso-wrap-style:square;v-text-anchor:top' filled="f" fillcolor="#bbe0e3 [4]"
+  stroked="f" strokecolor="black [1]">
+  <v:fill color2="white [0]"/>
+  <v:shadow color="gray [2]"/>
+  <v:textbox style='mso-fit-shape-to-text:t'/>
+  <p:animation number="4" delay="0" type="object" effect="cut"
+   direction="noBlack" buildby="char" flag="1028"/></v:shape>
+ <div id="_x0000_s2054_AllText" v:shape="_x0000_s2054" class=O
+ style='position:absolute;top:77.83%;left:59.74%;width:26.53%;height:6.5%;
+ white-space:nowrap'>
+ <div style='text-align:center;mso-line-spacing:"100 50 0";position:absolute;
+ top:0%;left:0%;width:100.0%;height:100.0%'><span lang=ES-MODERN
+ style='font-family:Tahoma;font-size:156%'><b><p:onmouseclick
+  hyperlinktype="otherFile" href="../principaleng.htm"><p:sound id="1"
+   builtinid="119" name="click.wav" href="sound001.wav"/></p:onmouseclick><a
+ href="../principaleng.htm" target="_blank"
+ onclick="window.event.cancelBubble=true;">English</a></b></span><span
+ style='font-family:Tahoma;font-size:156%;mso-special-format:lastCR;display:
+ none'><b>&#13;</b></span></div>
+ </div>
+</p:slide></div>
+
+<p:animation number="-634676116"/><oa:par id="TimeNode0" dur="indefinite"
+ restart="never" p:nodeType="timingRoot">
+ <oa:seq id="TimeNode1" dur="indefinite" prev="document.onpptprev"
+  next="document.onpptnext" concurrent="enabled" nextAction="seek"
+  p:nodeType="mainSeq">
+  <oa:par id="TimeNode2" begin="indefinite;TimeNode1.onbegin" fill="hold">
+   <oa:par id="TimeNode3" begin="0.0" fill="hold">
+    <oa:par id="TimeNode4" o:presetID="ppt_53" o:presetClass="entrance"
+     o:presetSubType="0x0" begin="0.0" fill="hold" p:nodeType="afterEffect">
+     <oa:set id="TimeNode5" begin="0.0" dur="0.001" fill="hold"
+      targetElement="_x0000_s2052" attributeName="style.visibility" to="visible"/>
+     <oa:animate id="TimeNode6" dur="5.0" fill="hold"
+      targetElement="_x0000_s2052" attributeName="ppt_w" calcmode="linear"
+      valueType="number" keyTimes="0.0;1.0" values="0.0;#ppt_w"/>
+     <oa:animate id="TimeNode7" dur="5.0" fill="hold"
+      targetElement="_x0000_s2052" attributeName="ppt_h" calcmode="linear"
+      valueType="number" keyTimes="0.0;1.0" values="0.0;#ppt_h"/>
+     <oa:animateFilter id="TimeNode8" dur="5.0" targetElement="_x0000_s2052"
+      transition="in" filter="fade"/>
+    </oa:par>
+   </oa:par>
+   <oa:par id="TimeNode9" begin="5.0" fill="hold">
+    <oa:iterate targetElement="_x0000_s2053" id="TimeNode10" o:presetID="ppt_45"
+     o:presetClass="entrance" o:presetSubType="0x0" begin="0.0" fill="hold"
+     o:groupID="0" p:nodeType="afterEffect" iterateType="byLetter"
+     iterateInterval="10.0%">
+     <oa:set id="TimeNode11" begin="0.0" dur="0.001" fill="hold"
+      attributeName="style.visibility" to="visible"/>
+     <oa:animateFilter id="TimeNode12" dur="1.0" transition="in" filter="fade"/>
+     <oa:animate id="TimeNode13" dur="1.0" fill="hold" attributeName="ppt_w"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      formulas="#ppt_w*sin(2.5*pi*$)" values="0.0;1.0"/>
+     <oa:animate id="TimeNode14" dur="1.0" fill="hold" attributeName="ppt_h"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      values="#ppt_h;#ppt_h"/>
+    </oa:iterate>
+    <![if !ppt]><oa:iterate targetElement="_x0000_s2053_AllText" id="TimeNode15"
+     o:presetID="ppt_45" o:presetClass="entrance" o:presetSubType="0x0"
+     begin="0.0" fill="hold" p:nodeType="withEffect" iterateType="byLetter"
+     iterateInterval="10.0%">
+     <oa:set id="TimeNode16" begin="0.0" dur="0.001" fill="hold"
+      attributeName="style.visibility" to="visible"/>
+     <oa:animateFilter id="TimeNode17" dur="1.0" transition="in" filter="fade"/>
+     <oa:animate id="TimeNode18" dur="1.0" fill="hold" attributeName="ppt_w"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      formulas="#ppt_w*sin(2.5*pi*$)" values="0.0;1.0"/>
+     <oa:animate id="TimeNode19" dur="1.0" fill="hold" attributeName="ppt_h"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      values="#ppt_h;#ppt_h"/>
+    </oa:iterate>
+    <![endif]></oa:par>
+   <oa:par id="TimeNode20" begin="6.6" fill="hold">
+    <oa:iterate targetElement="_x0000_s2054" id="TimeNode21" o:presetID="ppt_45"
+     o:presetClass="entrance" o:presetSubType="0x0" begin="0.0" fill="hold"
+     o:groupID="0" p:nodeType="afterEffect" iterateType="byLetter"
+     iterateInterval="10.0%">
+     <oa:set id="TimeNode22" begin="0.0" dur="0.001" fill="hold"
+      attributeName="style.visibility" to="visible"/>
+     <oa:animateFilter id="TimeNode23" dur="1.0" transition="in" filter="fade"/>
+     <oa:animate id="TimeNode24" dur="1.0" fill="hold" attributeName="ppt_w"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      formulas="#ppt_w*sin(2.5*pi*$)" values="0.0;1.0"/>
+     <oa:animate id="TimeNode25" dur="1.0" fill="hold" attributeName="ppt_h"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      values="#ppt_h;#ppt_h"/>
+    </oa:iterate>
+    <![if !ppt]><oa:iterate targetElement="_x0000_s2054_AllText" id="TimeNode26"
+     o:presetID="ppt_45" o:presetClass="entrance" o:presetSubType="0x0"
+     begin="0.0" fill="hold" p:nodeType="withEffect" iterateType="byLetter"
+     iterateInterval="10.0%">
+     <oa:set id="TimeNode27" begin="0.0" dur="0.001" fill="hold"
+      attributeName="style.visibility" to="visible"/>
+     <oa:animateFilter id="TimeNode28" dur="1.0" transition="in" filter="fade"/>
+     <oa:animate id="TimeNode29" dur="1.0" fill="hold" attributeName="ppt_w"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      formulas="#ppt_w*sin(2.5*pi*$)" values="0.0;1.0"/>
+     <oa:animate id="TimeNode30" dur="1.0" fill="hold" attributeName="ppt_h"
+      calcmode="linear" valueType="number" keyTimes="0.0;1.0"
+      values="#ppt_h;#ppt_h"/>
+    </oa:iterate>
+    <![endif]></oa:par>
+  </oa:par>
+ </oa:seq>
+</oa:par>
+<![if ppt]>
+<oa:buildParagraph targetElement="_x0000_s2053" groupID="0" build="asAWhole"
+ buildLevel="1" reverse="false" buildAdvance="onclick" userSetAnimBgd="false"/><oa:buildParagraph
+ targetElement="_x0000_s2054" groupID="0" build="asAWhole" buildLevel="1"
+ reverse="false" buildAdvance="onclick" userSetAnimBgd="false"/>
+<![endif]>
+</body>
+
+</html>
